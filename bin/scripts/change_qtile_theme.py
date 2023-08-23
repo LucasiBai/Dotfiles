@@ -1,6 +1,8 @@
 from os import path, listdir
 import sys
 
+from libqtile.command import lazy
+
 QTILE_PATH = path.join(path.expanduser("~"), ".config", "qtile")
 THEMES_DATA_PATH = path.join(QTILE_PATH, "themes")
 THEME_CONFIG_PATH = path.join(QTILE_PATH, "config.json")
@@ -19,12 +21,14 @@ def update_theme(theme, file):
 
     file.write(f'{{"theme": "{theme}"}}\n')
 
+    lazy.reload_config()
 
-def load_theme_list(theme, file):
+
+def list_themes(theme, file):
     print(*THEMES_LIST, sep="\n")
 
 
-METHODS = {"-w": update_theme, "-l": load_theme_list}
+METHODS = {"-w": update_theme, "-l": list_themes}
 
 if __name__ == "__main__":
     method = sys.argv[1]

@@ -117,11 +117,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-
-# Load Angular CLI autocompletion.
-source <(ng completion script)
-
 # Custom Alias
 alias spsource='~/bin/scripts/spsource.sh'
 alias ansource='~/bin/scripts/ansource.sh'
 alias change-theme='~/bin/scripts/change-theme.sh'
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+

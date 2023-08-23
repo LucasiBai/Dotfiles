@@ -12,9 +12,9 @@ def separator(fg="text", bg="dark"):
     return widget.Sep(**base(fg, bg), linewidth=0, padding=5)
 
 
-def icon(fg="text", bg="dark", fontsize=16, text="?", **kwargs):
+def icon(fg="text", bg="dark", fontsize=16, text="?", padding=3, **kwargs):
     return widget.TextBox(
-        **base(fg, bg), fontsize=fontsize, text=text, padding=3, **kwargs
+        **base(fg, bg), fontsize=fontsize, text=text, padding=padding, **kwargs
     )
 
 
@@ -28,10 +28,11 @@ def powerline(fg="light", bg="dark", direction=POWERLINE_DIRECTIONS["LEFT"]):
     )
 
 
-def distribution_logo():
+def distribution_logo(bg="color3"):
     return [
-        icon(bg="color3", text=DISTRIBUTION_LOGO, fontsize=20),
-        powerline("color3", POWERLINE_DIRECTIONS["RIGHT"]),
+        separator(bg=bg),
+        icon(bg=bg, text=DISTRIBUTION_LOGO, fontsize=24, padding=8),
+        powerline(fg=bg, direction=POWERLINE_DIRECTIONS["RIGHT"]),
     ]
 
 
@@ -40,12 +41,12 @@ def workspaces():
         separator(),
         widget.GroupBox(
             **base(fg="light"),
-            font="Ubuntu Nerd Font",
-            fontsize=35,
+            font="Ubuntu Nerd Font Regular",
+            fontsize=30,
             margin_y=3,
             margin_x=2,
             padding_y=8,
-            padding_x=6,
+            padding_x=4,
             borderwidth=1,
             active=colors["active"],
             inactive=colors["inactive"],
@@ -66,7 +67,7 @@ def workspaces():
 
 
 primary_widgets = [
-    # *distribution_logo(),
+    *distribution_logo(),
     *workspaces(),
     separator(),
     powerline("color4", "dark"),

@@ -3,7 +3,7 @@
 	"grey": ["#ABB2BF", "#ABB2BF"],
 	"light": ["#ffffff", "#ffffff"],
 	"text": ["#1f1d29", "#1f1d29"],
-	"focus": ["#eabbb9", "#eabbb9"],
+	"focus": ["#ffd7d6", "#ffd7d6"],
 	"unfocus": ["#846F6E", "#846F6E"],
 	"active": ["#f1ffff", "#f1ffff"],
 	"inactive": ["#4c566a", "#4c566a"],

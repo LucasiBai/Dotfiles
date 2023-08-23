@@ -58,8 +58,7 @@ keys = [
     # Exec Apps
     Key([mod], "t", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "m", lazy.spawn("rofi -show drun"), desc="Launch apps"),
-    Key([mod], "f", lazy.spawn("firefox"), desc="Launch Firefox"),
-    Key([mod], "b", lazy.spawn("brave-browser"), desc="Launch Brave"),
+    Key([mod], "b", lazy.spawn("brave"), desc="Launch Brave"),
     Key([mod], "c", lazy.spawn("code"), desc="Launch Vsc"),
     Key([mod], "y", lazy.spawn("mattermost-desktop"), desc="Launch Mattermost"),
     # Toggle between different layouts as defined below

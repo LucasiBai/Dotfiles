@@ -18,13 +18,10 @@ groups = [
     ),
     Group(
         "3",
-        label="",
+        label="",
         matches=[
             Match(
-                wm_class=["firefox"],
-            ),
-            Match(
-                wm_class=["brave-browser"],
+                wm_class=["brave", "brave-browser"],
             ),
         ],
     ),
