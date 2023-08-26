@@ -1,0 +1,295 @@
+:root {
+	--background: #151515;
+	--background-medium: #181818;
+	--background-low: #1c1c1c;
+	--foreground: #e8e3e3;
+	--accent: #8da3b9;
+	--background-lower: #222;
+	--grey: #636363;
+	--red: #b66467;
+}
+
+@font-face {
+	font-family: "Ubuntu Nerd Font";
+	src: url(../static/font.ttf);
+	font-style: normal;
+	font-display: block;
+}
+
+
+*:not(img) {
+	border-radius: 4px;
+	font-family: "Ubuntu Nerd Font";
+	font-size: 14px;
+	color: var(--foreground);
+	outline: none;
+  user-select: none;
+}
+
+.drop-container {
+	display: none;
+	position: absolute;
+	left: 50%;
+	top: 61.5%;
+	font-size: 14px;
+	background-color: var(--background-medium);
+	border-color: var(--background-lower);
+	border-width: 2px;
+	border-style: solid;
+	min-width: 120px;
+	z-index: 100;
+	padding: 0;
+}
+
+.drop-container > div {
+	height: 32px;
+	line-height: 32px;
+	padding: 0 12px;
+	text-decoration: none;
+	z-index: 100;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	cursor: pointer;
+	display: block;
+	text-align: start;
+}
+
+.drop-container.image > div {
+	padding-left: 40px;
+}
+
+.drop-container > div:hover {
+	background-color: var(--background-low);
+}
+
+body {
+	overflow: hidden;
+	-khtml-user-select: text;
+	user-select: text;
+	-moz-user-select: text;
+	-webkit-user-select: text;
+	-ms-user-select: text;
+	background-color: black;
+}
+
+body::before {
+	content: "";
+	display: block;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -10;
+	background-image: url(../static/wp.png);
+	background-size: cover;
+	background-position: center;
+	filter: blur(5px);
+}
+
+*::selection {
+	background-color: var(--accent);
+	color: var(--background);
+}
+
+#toast-container > div,
+#login-box,
+.ghost {
+	background-color: var(--background);
+}
+
+button,
+input {
+	background-color: var(--background-medium);
+	color: var(--foreground);
+}
+
+button {
+	border: solid 2px var(--accent);
+	height: 32px;
+	min-width: 32px;
+	cursor: pointer;
+
+  transition: all ease-in-out 0.3s;
+}
+
+#login-btn:hover:not(:disabled) {
+	background-color: var(--accent);
+	color: var(--background);
+}
+
+button:hover {
+	color: var(--accent);
+}
+
+input {
+	padding: 0 8px;
+	margin-right: 4px;
+	height: 28px;
+	border: solid 2px var(--background-low);
+	width: 240px;
+  transition: border ease-in-out 0.3s;
+}
+
+input:focus {
+	border-color: var(--accent);
+}
+
+#name {
+	font-size: x-large;
+	display: inline-block;
+}
+
+.bottom * {
+	font-size: small;
+	font-weight:normal;
+}
+
+.bottom {
+  position: absolute;
+  display: grid;
+  align-items: baseline;
+  bottom: 0;
+  width: 96%;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;	
+}
+
+.bottom > span {
+	display: inline-flex;
+  justify-self: center;
+  align-items:baseline
+}
+
+.bottom :first-child {
+	margin-left: -6px;
+	margin-bottom: 1px;
+  justify-self: start;
+  align-items: center;
+}
+
+.bottom> button{
+  justify-self: end;
+}
+
+.icon {
+	font-family: "Ubuntu Nerd Font";
+}
+
+#avatar {
+	border-radius: 50%;
+	pointer-events: none;
+	width: 128px;
+	height: 128px;
+	background-image: url("../static/usr_placeholder.jpg");
+	background-size: cover;
+	background-position: center;
+}
+
+.sm-avatar {
+	pointer-events: none;
+	max-width: 32px;
+	max-height: 32px;
+	position: absolute;
+	left: 0;
+}
+
+
+.show {
+	display: block;
+}
+
+.ghost {
+	border: none;
+}
+
+.xl-font {
+	font-size: large;
+}
+
+#content {
+	text-align: center;
+	margin: 10%;
+}
+
+#toast-container {
+	right: 4px;
+	z-index: 1000;
+	position: absolute;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+#toast-container > :not(:last-child) {
+	margin-bottom: 4px;
+}
+
+#login-btn:disabled {
+	border-color: var(--background-low);
+	color: var(--grey);
+}
+
+#toast-container > div {
+	font-size: smaller;
+	width: fit-content;
+	padding: 16px 32px;
+	border: solid 2px var(--background-lower);
+}
+
+.iflex {
+	display: inline-flex;
+}
+
+#toast-container > div.err {
+	border-color: var(--red);
+}
+
+#powermenu {
+	left: 8px;
+}
+
+#powermenu p {
+	line-height: 24px;
+}
+
+#session-list {
+	left: 40%;
+}
+
+.bottom-drop {
+	position: absolute;
+	width: fit-content;
+	height: fit-content;
+	top: unset;
+	bottom: 32px;
+}
+
+#login-box {
+	padding: 16px;
+	height: 400px;
+	position: fixed;
+	margin: auto;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 600px;
+	border: solid 2px var(--background-lower);
+}
+
+.login-box--error{
+  animation: titilar-borde 0.15s 4 alternate ease-in-out;
+  border: solid 2px var(--red);
+}
+
+@keyframes titilar-borde {
+  0% {
+    border-color: var(--background-low); 
+  }
+  100% {
+    border-color: var(--red); 
+  }
+}
