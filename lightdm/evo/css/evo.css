@@ -84,7 +84,11 @@ body::before {
 	background-image: url(../static/wp.png);
 	background-size: cover;
 	background-position: center;
-	filter: blur(5px);
+  transition: filter 0.4s ease-in-out;
+}
+
+body.log-in::before{
+  filter: blur(5px);
 }
 
 *::selection {
@@ -278,11 +282,49 @@ input:focus {
 	right: 0;
 	width: 600px;
 	border: solid 2px var(--background-lower);
+  transition: opacity 0.4s ease-in-out;
+  opacity: 0;
+}
+
+#login-box.log-in{
+  opacity: 1;
 }
 
 .login-box--error{
   animation: titilar-borde 0.15s 4 alternate ease-in-out;
   border: solid 2px var(--red);
+}
+
+#clock-box{
+  position: absolute;
+
+  bottom: 6rem;
+  left: 3rem;
+
+  transition: opacity 0.4s ease-in-out;
+
+  opacity: 1;
+}
+
+#clock-box *{
+  margin: 0;
+}
+
+#clock-box h2{
+  font-size: 11rem;
+  font-weight: 100;
+}
+
+#clock-box h3{
+  font-size: 3rem;
+  font-weight: 100;
+
+  margin-left: 1rem;
+}
+
+
+#clock-box.log-in{
+  opacity: 0;
 }
 
 @keyframes titilar-borde {

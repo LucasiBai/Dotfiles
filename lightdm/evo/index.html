@@ -11,10 +11,16 @@
     <script src="js/mock.js"></script>
 </head>
 
-<body>
+<body id="screen" >
     <div id="toast-container">
     </div>
-    <div id="login-box">
+    <div id="clock-box">
+      <div>
+        <h2 id="clock-time"></h2>
+        <h3 id="date-time"></h3>
+      </div>
+    </div>
+    <div id="login-box" >
         <form id="content" action="javascript: provide_secret();">
             <img id="avatar" class="unselectable"><img/>
             <div>

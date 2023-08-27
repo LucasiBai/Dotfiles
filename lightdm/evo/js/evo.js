@@ -9,11 +9,18 @@ let timeWidgetMode = 1;
 let currentUser;
 let currentSession;
 
+const LOG_IN_CLASS_STATE = "log-in"
+
 function update_time() {
 	$("dt").innerText =
 		timeWidgetMode === 0
 			? new Date().toLocaleDateString()
 			: new Date().toLocaleTimeString();
+
+  $("clock-time").innerText = getFormattedTime() 
+
+  $("date-time").innerText = getFormattedDate()
+
 }
 
 this.addEventListener("load", () => {
@@ -50,7 +57,28 @@ this.addEventListener("load", () => {
 	);
 	$("hostname").innerText = lightdm.hostname;
 	set_user(lightdm.select_user || lightdm.users[0]);
+  
+  this.addEventListener("click",()=>{
+    if(!$("login-box").className.includes(LOG_IN_CLASS_STATE)){
+      showLogin()
+    }
+  })
+
+  this.addEventListener("keydown",(event)=>{
+    const {keyCode} = event
+
+    const scapeKey = 27
+    const showLoginKey = 13
+
+    if(!$("login-box").className.includes(LOG_IN_CLASS_STATE) && keyCode === showLoginKey){
+      showLogin()
+    }
+    if($("login-box").className.includes(LOG_IN_CLASS_STATE) && keyCode === scapeKey){
+      hideLogin()
+    }
+  })
 });
+
 
 function make_menu_item(inner, click) {
 	const d = document.createElement("div");
@@ -143,7 +171,48 @@ function set_user(user) {
 	);
 	$("avatar").src = user.image;
 	$("name").textContent = user.display_name;
-	$("password-box").focus();
+  $("password-box").focus();
+}
+
+function hideLogin(){
+  $("login-box").className ="" 
+  $("screen").className ="" 
+  $("clock-box").className=""
+
+  $("password-box").value = ""
+}
+
+function showLogin(){
+  $("login-box").className = LOG_IN_CLASS_STATE
+  $("screen").className = LOG_IN_CLASS_STATE
+  $("clock-box").className = LOG_IN_CLASS_STATE
+
+  $("password-box").value = ""
+  $("password-box").focus()
+}
+
+function getFormattedTime() {
+  const date = new Date();
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  const amPm = hours >= 12 ? "PM" : "AM";
+  
+  hours = hours % 12 || 12;
+  
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  
+  const formattedTime = `${hours}:${minutes} ${amPm}`;
+  
+  return formattedTime;
+}
+
+function getFormattedDate() {
+  const date = new Date();
+
+  const options = { weekday: 'long', month: 'long', day: 'numeric' };
+  const formattedDate = date.toLocaleDateString('en-US', options);
+
+  return formattedDate;
 }
 
 function $(id) {
