@@ -6,8 +6,10 @@ sudo apt update
 
 sudo apt upgrade
 
-sudo apt install feh dmenu lightdm rofi slock dunst
+sudo apt install feh plymouth lightdm rofi dunst
 sudo apt install alacritty picom
+
+yay -S betterlockscreen
 
 sudo pip install qtile
 
