@@ -85,6 +85,7 @@ body::before {
 	background-size: cover;
 	background-position: center;
   transition: filter 0.4s ease-in-out;
+  filter: blur(0px);
 }
 
 body.log-in::before{
@@ -296,7 +297,7 @@ input:focus {
 }
 
 #clock-box{
-  position: absolute;
+  position: fixed;
 
   bottom: 6rem;
   left: 3rem;

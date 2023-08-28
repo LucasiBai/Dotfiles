@@ -68,15 +68,15 @@ this.addEventListener("load", () => {
     const {keyCode} = event
 
     const scapeKey = 27
-    const showLoginKey = 13
 
-    if(!$("login-box").className.includes(LOG_IN_CLASS_STATE) && keyCode === showLoginKey){
+    if(!$("login-box").className.includes(LOG_IN_CLASS_STATE)){
       showLogin()
     }
     if($("login-box").className.includes(LOG_IN_CLASS_STATE) && keyCode === scapeKey){
       hideLogin()
     }
   })
+
 });
 
 
@@ -183,12 +183,16 @@ function hideLogin(){
 }
 
 function showLogin(){
+  $("password-box").blur()
+
   $("login-box").className = LOG_IN_CLASS_STATE
   $("screen").className = LOG_IN_CLASS_STATE
   $("clock-box").className = LOG_IN_CLASS_STATE
 
-  $("password-box").value = ""
-  $("password-box").focus()
+  setTimeout(()=>
+  $("password-box").focus(),0
+  
+  )
 }
 
 function getFormattedTime() {
