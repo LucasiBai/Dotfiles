@@ -121,6 +121,8 @@ export NVM_DIR="$HOME/.nvm"
 alias spsource='~/bin/scripts/spsource.sh'
 alias ansource='~/bin/scripts/ansource.sh'
 alias change-theme='~/bin/scripts/change-theme.sh'
+alias set-wallpaper='~/bin/scripts/set-wallpaper.sh'
+
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 
