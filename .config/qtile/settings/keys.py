@@ -45,6 +45,18 @@ keys = [
     Key([mod, "control"], down, lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], up, lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    Key(
+        [mod, "control", "shift"],
+        right,
+        lazy.layout.client_to_next(),
+        desc="Moves client to next stack",
+    ),
+    Key(
+        [mod, "control", "shift"],
+        left,
+        lazy.layout.client_to_previous(),
+        desc="Moves client to previous stack",
+    ),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
@@ -57,13 +69,19 @@ keys = [
     ),
     # Exec Apps
     Key([mod], "t", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod], "m", lazy.spawn("rofi -show drun"), desc="Launch apps"),
+    Key([mod], "m", lazy.spawn("rofi -show drun"), desc="Launch apps' menu"),
     Key([mod], "b", lazy.spawn("brave"), desc="Launch Brave"),
     Key([mod], "c", lazy.spawn("code"), desc="Launch Vsc"),
     Key([mod], "y", lazy.spawn("mattermost-desktop"), desc="Launch Mattermost"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
+    Key(
+        [mod],
+        "f",
+        lazy.window.toggle_fullscreen(),
+        desc="Toggle fullscreen on the focused window",
+    ),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),

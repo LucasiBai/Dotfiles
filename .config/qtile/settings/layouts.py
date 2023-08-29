@@ -9,6 +9,7 @@ layout_conf = {
     "border_focus": colors["focus"][0],
     "border_normal": colors["unfocus"][0],
     "border_width": 2,
+    "border_on_single": True,
     "margin": 4,
 }
 
@@ -16,12 +17,14 @@ layouts = [
     layout.Columns(**layout_conf),
     layout.Max(),
     layout.Matrix(columns=2, **layout_conf),
+    layout.Stack(**layout_conf),
 ]
 
 code_layouts = [
     layout.Max(),
     layout.Columns(**layout_conf),
     layout.Matrix(columns=2, **layout_conf),
+    layout.Stack(**layout_conf),
 ]
 
 floating_layout = layout.Floating(
