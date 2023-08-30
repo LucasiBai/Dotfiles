@@ -49,7 +49,7 @@ def battery_widget(bg="dark", fg="active"):
             **base(fg, bg),
             fontsize=14,
             update_interval=1,
-            low_percentage=0.25,
+            low_percentage=0.15,
             low_foreground="#C83B38",
         ),
     ]
