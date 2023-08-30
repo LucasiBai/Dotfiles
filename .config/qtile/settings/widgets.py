@@ -1,5 +1,6 @@
 from libqtile import widget
 from .theme import colors, DISTRIBUTION_LOGO
+from .custom_widgets.custom_battery_widget import CustomBattery
 
 POWERLINE_DIRECTIONS = {"LEFT": "left", "RIGHT": "right"}
 
@@ -24,7 +25,7 @@ def powerline(fg="light", bg="dark", direction=POWERLINE_DIRECTIONS["LEFT"]):
         text="" if direction == POWERLINE_DIRECTIONS["LEFT"] else "",
         fontsize=37,
         padding=0,
-        font="meslolgs nf"
+        font="meslolgs nf",
     )
 
 
@@ -33,6 +34,24 @@ def distribution_logo(bg="color3"):
         separator(bg=bg),
         icon(bg=bg, text=DISTRIBUTION_LOGO, fontsize=24, padding=8),
         powerline(fg=bg, direction=POWERLINE_DIRECTIONS["RIGHT"]),
+    ]
+
+
+def volume_widget(bg="dark", fg="active"):
+    return [
+        icon(bg=bg, fg=fg, text="", padding=8),
+    ]
+
+
+def battery_widget(bg="dark", fg="active"):
+    return [
+        CustomBattery(
+            **base(fg, bg),
+            fontsize=14,
+            update_interval=1,
+            low_percentage=0.25,
+            low_foreground="#C83B38",
+        ),
     ]
 
 
@@ -58,7 +77,7 @@ def workspaces():
             this_screen_border=colors["grey"],
             other_current_screen_border=colors["dark"],
             other_screen_border=colors["dark"],
-            disable_drag=True
+            disable_drag=True,
         ),
         separator(),
         widget.WindowName(**base(fg="focus"), fontsize=14, padding=5),
@@ -84,7 +103,11 @@ primary_widgets = [
     separator(bg="color4"),
     powerline("color3", "color4"),
     icon(bg="color3", text=" "),  # Icon: nf-fa-feed
-    widget.Net(**base(bg="color3"), interface="wlp2s0"),
+    widget.Net(
+        **base(bg="color3"),
+        interface="wlan0",
+        format=" {down}   {up}",
+    ),
     separator(bg="color3"),
     powerline("color2", "color3"),
     widget.CurrentLayoutIcon(**base(bg="color2"), scale=0.65),
@@ -93,6 +116,9 @@ primary_widgets = [
     icon(bg="color1", fontsize=17, text=" "),  # Icon: nf-mdi-calendar_clock
     widget.Clock(**base(bg="color1"), format="%d/%m/%Y - %H:%M "),
     powerline("dark", "color1"),
+    # *volume_widget(),
+    # separator(),
+    *battery_widget(),
     widget.Systray(background=colors["dark"], padding=5),
     separator(),
 ]
